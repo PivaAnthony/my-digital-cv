@@ -1,0 +1,15 @@
+{
+  "name": "my-digital-cv",
+  "version": "1.0.0",
+  "description": "Digital CV Application",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "workspaces": [
+    "api",
+    "frontend"
+  ],
+  "author": "Anthony Piva",
+  "license": "ISC"
+}

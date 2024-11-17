@@ -1,0 +1,44 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: my-digital-cv_development
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./api
+    container_name: rails-api
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/my-digital-cv_development
+      RAILS_ENV: development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - ./api:/app
+
+  webapp:
+    build:
+      context: ./webapp
+    container_name: react-spa
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_BACKEND_URL: http://localhost:3000
+    depends_on:
+      - api
+    volumes:
+      - ./webapp:/app
+      - /app/node_modules
+
+volumes:
+  pg_data:
