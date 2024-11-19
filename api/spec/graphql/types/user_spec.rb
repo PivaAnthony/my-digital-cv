@@ -1,5 +1,5 @@
 RSpec.describe Types::User do
-  include GraphQL::Testing::Helpers.for(ApiSchema)
+  include GraphQL::Testing::Helpers.for(DigitalCVSchema)
 
   subject { described_class }
   let(:user) { create(:user) }

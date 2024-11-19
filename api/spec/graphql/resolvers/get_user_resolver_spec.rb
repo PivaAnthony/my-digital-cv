@@ -18,5 +18,11 @@ RSpec.describe Resolvers::GetUserResolver do
 
       expect(result["data"]["getUser"]).to eq(expected_result)
     end
+
+    it "returns not found error if user does not exist" do
+      result = graphql_execute(query, variables: { id: 0 })
+
+      expect(result["errors"][0]["message"]).to eq("Couldn't find User with id 0")
+    end
   end
 end
