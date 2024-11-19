@@ -1,6 +1,15 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter 'app/graphql/digitalcv_schema.rb'
+  add_filter 'app/controllers/graphql_controller.rb'
+
+  add_filter %r{app/graphql/.*base.*\.rb$}
+  add_filter %r{app/.*application.*\.rb$}
+end
+
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
