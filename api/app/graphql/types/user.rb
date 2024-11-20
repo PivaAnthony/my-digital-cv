@@ -1,35 +1,27 @@
 class Types::User < Types::BaseObject
   field :id, ID,
-        null: false,
-        description: "ID of the user."
+        null: false
 
   field :name, String,
-        null: false,
-        description: "Name of the user."
+        null: false
 
   field :surname, String,
-        null: false,
-        description: "Surname of the user."
+        null: false
 
   field :email, String,
-        null: false,
-        description: "Email of the user."
+        null: false
 
   field :phone, String,
-        null: true,
-        description: "Phone number of the user."
+        null: true
 
   field :birthdate, GraphQL::Types::ISO8601DateTime,
-        null: true,
-        description: "Birthdate of the user."
+        null: true
 
   field :created_at, GraphQL::Types::ISO8601DateTime,
-        null: false,
-        description: "Timestamp when the user was created."
+        null: false
 
   field :updated_at, GraphQL::Types::ISO8601DateTime,
-        null: false,
-        description: "Timestamp when the user was last updated."
+        null: false
 
   field :full_name, String,
         null: false,
