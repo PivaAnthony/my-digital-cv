@@ -19,7 +19,7 @@ class Types::User < Types::BaseObject
         null: true,
         description: "Phone number of the user."
 
-  field :birthdate, GraphQL::Types::ISO8601Date,
+  field :birthdate, GraphQL::Types::ISO8601DateTime,
         null: true,
         description: "Birthdate of the user."
 

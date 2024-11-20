@@ -18,7 +18,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_20_002035) do
     t.string "name", default: "", null: false
     t.string "surname", default: "", null: false
     t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "password_digest", default: "", null: false
+    t.string "password_confirmation"
     t.string "phone"
     t.datetime "birthdate"
     t.string "reset_password_token"
