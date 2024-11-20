@@ -4,7 +4,6 @@ gem "rails", "~> 8.0.0"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 gem 'graphql', '~> 2.0'
-gem 'devise'
 gem 'rspec-rails', '~> 6.0'
 gem "rack-cors"
 
