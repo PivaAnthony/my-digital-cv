@@ -19,18 +19,8 @@ class Hash
   end
 end
 
-def format_timestamps(hash)
-  hash.each do |key, value|
-    if value.is_a?(String) && key.match?(/_at$/)
-      hash[key] = DateTime.parse(value).utc.iso8601(0)
-    elsif value.is_a?(Hash)
-      format_timestamps(value)
-    elsif value.is_a?(Array)
-      value.each { |v| format_timestamps(v) if v.is_a?(Hash) }
-    end
-  end
-
-  hash
+def format_timestamps(value)
+  value = DateTime.parse(value).utc.iso8601(0)
 end
 
 def transform_id_to_integer(hash)

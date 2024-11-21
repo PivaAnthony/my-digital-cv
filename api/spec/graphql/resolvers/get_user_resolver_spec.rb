@@ -14,9 +14,18 @@ RSpec.describe Resolvers::GetUserResolver do
 
     it "returns a user by it's ID" do
       result = graphql_execute(query, variables: { id: user.id })
-      expected_result = deep_camelize_keys(format_timestamps(user.as_json))
+      expected_result = user.as_json
 
-      expect(result["data"]["getUser"]).to eq(expected_result)
+      expect(result["data"]["getUser"]).to match({
+        "id" => expected_result["id"],
+        "name" => expected_result["name"],
+        "surname" => expected_result["surname"],
+        "email" => expected_result["email"],
+        "phone" => expected_result["phone"],
+        "birthdate" => format_timestamps(expected_result["birthdate"]),
+        "createdAt" => format_timestamps(expected_result["created_at"]),
+        "updatedAt" => format_timestamps(expected_result["updated_at"])
+      })
     end
 
     it "returns not found error if user does not exist" do
